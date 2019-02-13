@@ -41,7 +41,13 @@ corrplot(cor_rmv)
 colnames(ex_prod_rmv) <- c("PT_A", "PT_D", "PT_GC", "PT_L", 
                            "PT_N", "PT_PC", "PT_P", "PT_PS", 
                            "PT_SM", "PT_S", "PT_T", "Price", 
-                           "5star", "4star", "3star", "2star",
-                           "1star", "PosR", "NegR", "RecP", 
+                           "x5star", "x4star", "x3star", "x2star",
+                           "x1star", "PosR", "NegR", "RecP", 
                            "ShipW", "ProD", "ProW", "ProH", 
                            "ProfM", "Vol")
+ex_prod_tree <- rpart(Vol ~ ., data = ex_prod_rmv)
+
+# remove x5star.
+ex_prod_rmv$x5star = NULL
+ex_prod_tree <- rpart(Vol ~ ., data = ex_prod_rmv)
+rpart.plot(ex_prod_tree)
