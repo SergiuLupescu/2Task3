@@ -4,7 +4,7 @@ library(caret)
 library(corrplot)
 library(rpart)
 library(rpart.plot)
-library(dplyer)
+library(dplyr)
 
 # load dataset.
 ex_product <- read.csv("existingproductattributes2017.2.csv")
